@@ -1,0 +1,41 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  Live-observed 401 from https://api.erebor.bank/ and the Auth0 configuration in
+  the erebor.bank / developer.erebor.bank front-end bundles (env.js). Full auth
+  documentation lives at https://docs.erebor.bank but is login-gated.
+summary:
+  types: [apiKey, oauth2]
+  api_key_in: [header]
+  oauth2_flows: [authorizationCode]
+  notes: >-
+    Two distinct auth surfaces. (1) Programmatic API access to api.erebor.bank is
+    secured with an API key — an unauthenticated request returns HTTP 401
+    {"error":"UNAUTHORIZED","message":"Invalid or missing API key."}. The exact
+    header/parameter name is not documented publicly (docs are gated); header
+    placement is inferred from the "API key" wording and common practice and is
+    NOT confirmed. (2) Human access to the customer app (erebor.bank) and the
+    developer dashboard (developer.erebor.bank) is via Auth0 (OpenID Connect /
+    OAuth 2.0 Authorization Code), configured with auth0Domain, auth0ClientId,
+    auth0Audience; the developer dashboard carries separate test and live Auth0
+    configurations (test/live mode).
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  description: >-
+    API key required on all api.erebor.bank requests. Confirmed by the gateway's
+    401 "Invalid or missing API key" response. Header name not published.
+  confirmed: partial
+  sources: [https://api.erebor.bank/]
+- name: auth0
+  type: oauth2
+  flow: authorizationCode
+  description: >-
+    Auth0-hosted OpenID Connect used to authenticate humans into the customer
+    banking app and the developer dashboard. API keys are minted after login.
+  provider: Auth0
+  confirmed: true
+  sources:
+  - https://erebor.bank/assets/env-Dv_ZYF_D.js
+  - https://developer.erebor.bank/assets/env-VmXpXH3m.js
