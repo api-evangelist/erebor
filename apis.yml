@@ -1,8 +1,32 @@
 aid: erebor
 name: Erebor
-description: 'Erebor is a company surfaced as a portfolio company of lux-capital and added to the API
-  Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Erebor is a digital-first, FDIC-insured national bank built for the innovation
+  economy — technology startups, cryptocurrency and stablecoin businesses, and AI
+  and defense companies that traditional banks have historically underserved.
+  Co-founded by Palmer Luckey (Anduril) and Joe Lonsdale (8VC) and backed by
+  Founders Fund, Lux Capital, Haun Ventures, and 8VC, Erebor received OCC
+  preliminary conditional approval in October 2025, FDIC deposit-insurance
+  approval in December 2025, and launched in February 2026. It offers deposit
+  accounts, wires and money movement, and stablecoin operations. Erebor exposes a
+  developer API at api.erebor.bank secured with API keys, an Auth0-authenticated
+  developer dashboard at developer.erebor.bank, and Fern-based developer
+  documentation at docs.erebor.bank. The public developer docs are login-gated, so
+  the machine-readable surface captured here is limited to what is observable
+  without credentials.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://erebor.bank/apple-touch-icon.png
 url: https://raw.githubusercontent.com/api-evangelist/erebor/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,13 +36,74 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Fintech
-apis: []
+- Banking
+- Digital Bank
+- Stablecoin
+- Cryptocurrency
+- Payments
+- Financial Services
+- API
+apis:
+- name: Erebor API
+  description: >-
+    Erebor's developer API for programmatic access to banking, money-movement, and
+    stablecoin operations. The gateway at api.erebor.bank authenticates requests
+    with an API key and returns a structured JSON error envelope
+    ({docs_url, error, field, message}); API keys are minted in the Auth0-secured
+    developer dashboard, which supports separate test and live modes. Full
+    reference documentation is published on Fern at docs.erebor.bank but is gated
+    behind login.
+  humanURL: https://developer.erebor.bank
+  baseURL: https://api.erebor.bank
+  properties:
+  - type: Documentation
+    url: https://docs.erebor.bank
+  - type: APIReference
+    url: https://docs.erebor.bank
+  - type: Authentication
+    url: authentication/erebor-authentication.yml
+  - type: ErrorCatalog
+    url: errors/erebor-problem-types.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DomainSecurity
+  url: security/erebor-domain-security.yml
+- type: Website
+  url: https://erebor.bank
+- type: DeveloperPortal
+  url: https://developer.erebor.bank
+- type: Documentation
+  url: https://docs.erebor.bank
+- type: APIReference
+  url: https://docs.erebor.bank
+- type: SignUp
+  url: https://erebor.bank
+- type: TermsOfService
+  url: https://erebor.bank/terms
+- type: PrivacyPolicy
+  url: https://erebor.bank/privacy
+- type: Authentication
+  url: authentication/erebor-authentication.yml
+- type: ErrorCatalog
+  url: errors/erebor-problem-types.yml
+- type: Conventions
+  url: conventions/erebor-conventions.yml
+- type: Sandbox
+  url: sandbox/erebor-sandbox.yml
+- type: Conformance
+  url: conformance/erebor-conformance.yml
+- type: LLMsTxt
+  url: llms/erebor-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

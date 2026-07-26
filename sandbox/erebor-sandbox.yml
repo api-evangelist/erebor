@@ -1,0 +1,35 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  developer.erebor.bank front-end configuration (env.js) and app asset references.
+  Sandbox documentation and test values are gated at https://docs.erebor.bank.
+test_live_separation:
+  supported: true
+  detail: >-
+    The developer dashboard exposes separate test and live modes, backed by
+    distinct Auth0 configurations (test `auth0*` and `liveAuth0*` client
+    settings). API keys are minted per mode in the dashboard.
+  evidence:
+  - https://developer.erebor.bank/assets/env-VmXpXH3m.js
+sandbox_environment:
+  host: media.sbx.erebor.bank
+  detail: >-
+    A sandbox ("sbx") media host is referenced by the customer app, indicating a
+    non-production environment exists.
+  evidence:
+  - https://erebor.bank/
+console:
+  url: https://developer.erebor.bank
+  detail: >-
+    The Developer Dashboard is the interactive console where developers manage API
+    keys and switch between test and live modes (Auth0 login required).
+test_values:
+  published: unknown
+  detail: >-
+    No test card numbers, magic identifiers, or fixture values could be captured —
+    the testing documentation is behind the login-gated Fern docs. None are
+    invented here.
+notes: >-
+  Existence of a test/live split and a sandbox environment is confirmed from the
+  public front-end; the concrete test credentials/values are not publicly
+  observable.

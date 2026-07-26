@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: Live probes of the /.well-known/ surface on Erebor hosts (2026-07-19).
+result: none
+note: >-
+  No real /.well-known/ discovery documents are published. On the primary host
+  (erebor.bank) every /.well-known/ path returns HTTP 200 with Content-Type
+  text/html — the React SPA's catch-all index, not a genuine document. On the API
+  gateway (api.erebor.bank) every path (including /.well-known/*) returns HTTP 401
+  JSON requiring an API key. No raw files were saved and no WellKnown scoring
+  pointer is emitted (there is no catalog to point to).
+probes:
+- host: https://erebor.bank
+  documents:
+  - {path: /.well-known/security.txt, status: 200, real: false, note: 'text/html SPA fallback'}
+  - {path: /.well-known/openid-configuration, status: 200, real: false, note: 'text/html SPA fallback'}
+  - {path: /.well-known/oauth-authorization-server, status: 200, real: false, note: 'text/html SPA fallback'}
+  - {path: /.well-known/api-catalog, status: 200, real: false, note: 'text/html SPA fallback'}
+  - {path: /.well-known/ai-plugin.json, status: 200, real: false, note: 'text/html SPA fallback'}
+- host: https://api.erebor.bank
+  documents:
+  - {path: /.well-known/security.txt, status: 401, real: false, note: 'API-key gated JSON'}
+  - {path: /.well-known/openid-configuration, status: 401, real: false, note: 'API-key gated JSON'}
+  - {path: /.well-known/oauth-authorization-server, status: 401, real: false, note: 'API-key gated JSON'}

@@ -1,0 +1,50 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  Observed from api.erebor.bank (live gateway behaviour) and the erebor.bank /
+  developer.erebor.bank front-end configuration. Full convention docs are gated at
+  https://docs.erebor.bank.
+authentication:
+  style: api-key
+  detail: >-
+    API key on api.erebor.bank requests (see authentication/erebor-authentication.yml).
+    Human/dashboard login via Auth0 OIDC.
+  ref: authentication/erebor-authentication.yml
+error_envelope:
+  style: custom-json
+  shape: '{ error, message, field, docs_url }'
+  detail: >-
+    Flat JSON error object with a SCREAMING_SNAKE_CASE error code, human message,
+    optional field pointer, and a docs_url deep-link into the error reference.
+    Not RFC 9457.
+  ref: errors/erebor-problem-types.yml
+documentation_convention:
+  docs_url_on_errors: true
+  detail: Every API error includes a docs_url pointing to docs.erebor.bank/errors.
+environments:
+  modes: [test, live]
+  detail: >-
+    The developer dashboard exposes separate test and live modes (distinct Auth0
+    configurations: test auth0* and liveAuth0*), and a sandbox media host
+    (media.sbx.erebor.bank) is referenced by the app. See sandbox/erebor-sandbox.yml.
+  ref: sandbox/erebor-sandbox.yml
+idempotency:
+  supported: unknown
+  detail: >-
+    No idempotency-key contract could be confirmed from the public surface (docs
+    gated). Not asserted.
+pagination:
+  style: unknown
+  detail: Not determinable from the public surface.
+rate_limiting:
+  signaled: unknown
+  detail: Not determinable from the public surface.
+versioning:
+  scheme: unknown
+  detail: >-
+    Path-based versioning is plausible (the gateway 401s uniformly on /v1) but the
+    version scheme is not documented publicly. Not asserted.
+notes: >-
+  Erebor's public developer documentation is login-gated, so cross-cutting
+  conventions beyond the auth model and error envelope could not be verified.
+  Fields left "unknown" are honestly undetermined, not absent.

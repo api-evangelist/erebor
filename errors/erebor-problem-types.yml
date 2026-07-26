@@ -1,0 +1,37 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  Live-observed error response from https://api.erebor.bank/. The provider's error
+  reference is linked from every error via docs_url
+  (https://docs.erebor.bank/errors) but the docs site is login-gated.
+format: custom-json
+envelope:
+  description: >-
+    Errors are returned as a flat JSON object (Content-Type application/json), not
+    RFC 9457 problem+json. Every error carries a machine-readable code, a
+    human-readable message, an optional field pointer, and a docs URL.
+  fields:
+  - name: error
+    type: string
+    description: SCREAMING_SNAKE_CASE machine-readable error code (e.g. UNAUTHORIZED).
+  - name: message
+    type: string
+    description: Human-readable explanation.
+  - name: field
+    type: string|null
+    description: Name of the request field that caused the error, or null.
+  - name: docs_url
+    type: string
+    description: Link to the relevant page in the error reference at docs.erebor.bank/errors.
+problems:
+- status: 401
+  error: UNAUTHORIZED
+  title: Invalid or missing API key
+  message: Invalid or missing API key.
+  docs_url: https://docs.erebor.bank/errors
+  observed: true
+  source: https://api.erebor.bank/
+notes: >-
+  Only the 401 UNAUTHORIZED code could be observed without credentials; the full
+  error registry at docs.erebor.bank/errors is gated. The envelope shape above is
+  verbatim from the live gateway and applies to all error responses.

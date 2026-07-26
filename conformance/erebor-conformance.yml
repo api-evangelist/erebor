@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  Derived from observed auth surfaces (api.erebor.bank, Auth0 config) and public
+  regulatory facts. Standards not observable from the gated docs are marked
+  unknown rather than asserted.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    Human/dashboard authentication uses Auth0, an OAuth 2.0 / OpenID Connect
+    provider (auth0Domain/clientId/audience in the app config).
+- id: oidc
+  conforms: true
+  evidence: Auth0-hosted OpenID Connect for developer.erebor.bank and erebor.bank login.
+- id: api-key-auth
+  conforms: true
+  evidence: api.erebor.bank requires an API key (401 "Invalid or missing API key").
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors use a custom flat JSON envelope ({error,message,field,docs_url}), not
+    application/problem+json.
+- id: fdic-insured
+  conforms: true
+  evidence: >-
+    Erebor is an FDIC-insured national bank (FDIC deposit-insurance approval Dec
+    2025; FDIC banner and disclosures in the customer app). Regulatory posture, not
+    an API standard.
+- id: fapi
+  conforms: unknown
+  evidence: Not determinable from the public surface.
+- id: pci-dss
+  conforms: unknown
+  evidence: Not determinable; no public trust center or compliance page found.
+- id: soc2
+  conforms: unknown
+  evidence: Not determinable; no public trust center found.
+notes: >-
+  No published certifications/compliance program page was reachable without login,
+  so no `Compliance` pointer is emitted. FDIC insurance is a regulatory fact, not a
+  compliance certification for scoring purposes.
