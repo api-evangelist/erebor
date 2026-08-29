@@ -14,6 +14,17 @@ description: >-
   documentation at docs.erebor.bank. The public developer docs are login-gated, so
   the machine-readable surface captured here is limited to what is observable
   without credentials.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
