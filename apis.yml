@@ -56,7 +56,7 @@ tags:
 - Stablecoins
 - Cryptocurrency
 - Payments
-- Financial-Services
+- Financial Services
 tags_raw:
 - Company
 - Fintech
@@ -67,6 +67,7 @@ tags_raw:
 - Payments
 - Financial Services
 - API
+- Financial-Services
 apis:
 - name: Erebor API
   description: >-
