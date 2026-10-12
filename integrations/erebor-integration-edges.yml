@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/erebor/integrations
+- https://n8n.io/integrations/erebor/
+- https://composio.dev/toolkits/erebor
+- https://monid.ai/tools/erebor
+checked:
+- https://composio.dev/toolkits/erebor
+- https://monid.ai/tools/erebor
+- https://n8n.io/integrations/erebor/
+- https://zapier.com/apps/erebor/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
